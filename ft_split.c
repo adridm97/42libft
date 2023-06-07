@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 22:21:40 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/05/31 21:06:29 by aduenas-         ###   ########.fr       */
+/*   Updated: 2023/06/07 20:43:12 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_word(const char *s, int start, int end)
 	i = 0;
 	word = malloc(sizeof(char) * (end - start + 1));
 	if (!word)
-		return (0);
+		return (NULL);
 	while (start < end)
 	{
 		word[i] = s[start];
