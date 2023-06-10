@@ -6,12 +6,13 @@
 #    By: aduenas- <aduenas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 22:21:03 by aduenas-          #+#    #+#              #
-#    Updated: 2023/05/03 23:01:19 by aduenas-         ###   ########.fr        #
+#    Updated: 2023/06/10 16:32:09 by aduenas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-CFLAGS	= -Wall -Wextra -Werror -I. -c
+CFLAGS	= -Wall -Wextra -Werror -I.
+LIB = libft.h
 SRC		= 	ft_isalpha.c	\
 			ft_isdigit.c	\
 			ft_isalnum.c	\
@@ -50,17 +51,19 @@ SRC		= 	ft_isalpha.c	\
 OBJ	= $(SRC:%.c=%.o)
 
 all: $(NAME)
-$(NAME): $(OBJ)
-		ar rcs $(NAME) $(OBJ)
-		ranlib $(NAME)
 
-$(OBJ): $(SRC)
-		gcc $(CFLAGS) $(SRC)
+$(NAME): $(OBJ) $(LIB)
+	ar rcs $(NAME) $(OBJ)
+
+%.o: %.c $(LIB)
+	cc $(CFLAGS) -c $< -o $@ 
 
 clean:
-		rm -f $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-		rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean re
